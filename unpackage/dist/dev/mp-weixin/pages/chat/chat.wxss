@@ -1,0 +1,17 @@
+@charset "UTF-8";
+/* 水平间距 */
+/* 水平间距 */
+.pic-map.data-v-bf16e7f4 {
+  background-color: rgba(155, 155, 155, 0.9);
+}
+.map-img.data-v-bf16e7f4 {
+  position: fixed;
+}
+.map-img .map-marker.data-v-bf16e7f4 {
+  position: absolute;
+  width: 37.5px;
+  height: 50px;
+  margin-top: -50px;
+  margin-left: -18.25px;
+}
+

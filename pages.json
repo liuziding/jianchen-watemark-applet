@@ -1,0 +1,54 @@
+{
+	"pages": [{
+		"path": "pages/chat/chat",
+		"style": {
+			"navigationBarTitleText": "阿辰AI对话",
+			"enablePullDownRefresh": false
+		}
+	}, {
+		"path": "pages/ancientry/ancientry",
+		"style": {
+			"navigationBarTitleText": "去水印",
+			"enablePullDownRefresh": false
+		}
+	}, {
+		"path": "pages/my/my",
+		"style": {
+			"navigationBarTitleText": "用户中心",
+			"enablePullDownRefresh": false
+		}
+	}],
+	
+	"tabBar": {
+		"color": "#cdcdcd",
+		"selectedColor": "#ff0000",
+		"borderStyle": "black",
+		"backgroundColor": "#ffffff",
+		"list": [{
+			"pagePath": "pages/chat/chat",
+			"text": "对话",
+			"iconPath": "/static/images/tabbar/chat.png",
+			"selectedIconPath": "/static/images/tabbar/chat_active.png"
+		}, {
+			"pagePath": "pages/ancientry/ancientry",
+			"text": "去水印",
+			"iconPath": "/static/images/tabbar/ancientry.png",
+			"selectedIconPath": "/static/images/tabbar/ancientry_active.png"
+		}, {
+			"pagePath": "pages/my/my",
+			"text": "我的",
+			"iconPath": "/static/images/tabbar/my.png",
+			"selectedIconPath": "/static/images/tabbar/my_active.png"
+		}]
+	},
+	
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8",
+		"app-plus": {
+			"background": "#efeff4"
+		}
+	}
+}

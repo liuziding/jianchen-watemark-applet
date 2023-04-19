@@ -1,0 +1,27 @@
+@charset "UTF-8";
+/* 水平间距 */
+/* 水平间距 */
+page {
+  background-color: #F5F5F5;
+}
+.my .my-head {
+  width: 100%;
+  height: 300rpx;
+  background-color: #408CE7;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.my .my-head .my_avatar_icon {
+  background-color: aquamarine;
+  border-radius: 50%;
+  height: 100rpx;
+  width: 100rpx;
+}
+.my .my-head .my_avatar_text {
+  color: #FFF;
+  font-size: 28rpx;
+  margin-top: 6rpx;
+}
+

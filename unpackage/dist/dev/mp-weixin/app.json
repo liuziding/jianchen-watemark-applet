@@ -1,0 +1,41 @@
+{
+  "pages": [
+    "pages/chat/chat",
+    "pages/ancientry/ancientry",
+    "pages/my/my"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "uni-app",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  },
+  "tabBar": {
+    "color": "#cdcdcd",
+    "selectedColor": "#ff0000",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/chat/chat",
+        "text": "对话",
+        "iconPath": "/static/images/tabbar/chat.png",
+        "selectedIconPath": "/static/images/tabbar/chat_active.png"
+      },
+      {
+        "pagePath": "pages/ancientry/ancientry",
+        "text": "去水印",
+        "iconPath": "/static/images/tabbar/ancientry.png",
+        "selectedIconPath": "/static/images/tabbar/ancientry_active.png"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "我的",
+        "iconPath": "/static/images/tabbar/my.png",
+        "selectedIconPath": "/static/images/tabbar/my_active.png"
+      }
+    ]
+  },
+  "usingComponents": {}
+}
