@@ -3,5 +3,6 @@
   "projectname": "jianchen-watemark-applet",
   "setting": {
     "compileHotReLoad": true
-  }
+  },
+  "libVersion": "2.31.0"
 }

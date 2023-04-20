@@ -1,7 +1,18 @@
 <template>
 	<view class="ancientry">
 		<view class="ancientry_original">
-			<image :src="originalImage" mode="aspectFit" />
+			<template v-if="originalImage">
+				<image :src="originalImage" mode="aspectFit" />
+				<view class="canvas_main" :style="{position: 'absolute', left:canvasLeft+'px', top:canvasTop+'px', right:canvasRight+'px', bottom:canvasBottom+'px'}">
+					1341234213
+				</view>
+			</template>
+			<template v-else>
+				<view class="angle left-top-angle"></view>
+				<view class="angle left-bottom-angle"></view>
+				<view class="angle right-top-angle"></view>
+				<view class="angle right-bottom-angle"></view>
+			</template>
 		</view>
 		<view class="ancientry_original_operation">
 			<view class="ancientry_original_button" @click="uploadImage">上传图片</view>
@@ -18,11 +29,17 @@
 
 <script>
 	import base64src from '@/utils/base64.js';
-	// import { Http } from '@/server/httpClient.js';
-	// const httpClient = new Http();
 	export default {
 		data() {
 			return {
+				imgWidth: 0, 								// 原始图片宽度
+				imgHeight: 0, 							// 原始图片高度
+				canvasLeft: 0, 						// 画布距离左边大小
+				canvasTop: 0, 							// 画布距离顶部大小
+				canvasRight: 0, 						// 画布距离右边大小
+				canvasBottom: 0, 					// 画布距离底部大小
+				originalWidth: 0, 					// 原始盒子宽度
+				originalHeight: 0,					// 原始盒子高度
 				originalImage: null,
 				generatedImage: null,
 				qrcode: null,
@@ -31,6 +48,18 @@
 		onLoad() {
 			// this.getBase64ImageUrl(this.qrcode);
 			this.handleGetAccessToken();
+			
+		},
+		onReady() {
+			// 获取上方边框的宽高
+			let that = this;
+			uni.createSelectorQuery()
+					.select(".ancientry_original")
+					.fields({ node: true, size: true })
+					.exec(async (res) => {
+						that.originalWidth = res[0].width;
+						that.originalHeight = res[0].height;
+					});
 		},
 		methods: {
 			
@@ -45,13 +74,38 @@
 						that.originalImage = res.tempFilePaths[0];
 						that.generatedImage = null;
 						that.qrcode = null;
-						// uni.getFileSystemManager().readFile({
-						// 	filePath: that.originalImage,
-						// 	encoding: 'base64',
-						// 	success: r => {
-						// 		that.originalImage = 'data:image/jpeg;base64,' + r.data;
-						// 	}
-						// })
+
+						setTimeout(function() {
+							// 获取图片宽高
+							uni.getImageInfo({
+								src: res.tempFilePaths[0],
+								success: info => {
+									// 原始图片的真实宽高
+									that.imgWidth = info.width;
+									that.imgheight = info.height;
+									let ratio_w = that.originalWidth / info.width;
+									let ratio_h = that.originalHeight / info.height;
+									
+									if (ratio_w > ratio_h) {
+										let distance = (that.originalWidth - (that.originalHeight * that.imgWidth) / info.height) / 2;
+										that.canvasTop = 0;
+										that.canvasBottom = 0;
+										that.canvasLeft = distance;
+										that.canvasRight = distance;
+									} else {
+										let distance = (that.originalHeight - (that.originalWidth / info.width) * info.height) / 2;
+										that.canvasLeft = 0;
+										that.canvasRight = 0;
+										that.canvasTop = distance;
+										that.canvasBottom = distance;
+									}
+								},
+								fail(e) {
+									console.log(e);
+									debugger;
+								}
+							})
+						}, 100);
 					}
 				});
 			},
@@ -245,6 +299,47 @@
 			image {
 				width: 100%;
 				height: 100%;
+			}
+		}
+		.ancientry_original {
+			position: relative;
+			border: 1px solid green;
+			.canvas_main {
+				// position: absolute;
+				// left: 40px;
+				// top: 20px;
+				// bottom: 20px;
+				// right: 20px;
+				border: 1px solid red;
+			}
+			.angle {
+				border-right: 8rpx solid #999;
+				border-top: 8rpx solid #999;
+				width: 60rpx;
+				height: 60rpx;
+			}
+			.left-top-angle {
+				position: absolute;
+				left: 20rpx;
+				top: 20rpx;
+				transform: rotate(270deg);
+			}
+			.left-bottom-angle {
+				position: absolute;
+				left: 20rpx;
+				bottom: 20rpx;
+				transform: rotate(180deg);
+			}
+			.right-top-angle {
+				position: absolute;
+				right: 20rpx;
+				top: 20rpx;
+			}
+			.right-bottom-angle {
+				position: absolute;
+				right: 20rpx;
+				bottom: 20rpx;
+				transform: rotate(90deg);
 			}
 		}
 		.ancientry_original_operation {

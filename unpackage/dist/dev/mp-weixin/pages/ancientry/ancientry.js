@@ -142,6 +142,8 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
+var _regenerator = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/regenerator */ 62));
+var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ 64));
 var _base = _interopRequireDefault(__webpack_require__(/*! @/utils/base64.js */ 47));
 //
 //
@@ -161,11 +163,36 @@ var _base = _interopRequireDefault(__webpack_require__(/*! @/utils/base64.js */ 
 //
 //
 //
-// import { Http } from '@/server/httpClient.js';
-// const httpClient = new Http();
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default = {
   data: function data() {
     return {
+      imgWidth: 0,
+      // 原始图片宽度
+      imgHeight: 0,
+      // 原始图片高度
+      canvasLeft: 0,
+      // 画布距离左边大小
+      canvasTop: 0,
+      // 画布距离顶部大小
+      canvasRight: 0,
+      // 画布距离右边大小
+      canvasBottom: 0,
+      // 画布距离底部大小
+      originalWidth: 0,
+      // 原始盒子宽度
+      originalHeight: 0,
+      // 原始盒子高度
       originalImage: null,
       generatedImage: null,
       qrcode: null
@@ -174,6 +201,32 @@ var _default = {
   onLoad: function onLoad() {
     // this.getBase64ImageUrl(this.qrcode);
     this.handleGetAccessToken();
+  },
+  onReady: function onReady() {
+    // 获取上方边框的宽高
+    var that = this;
+    uni.createSelectorQuery().select(".ancientry_original").fields({
+      node: true,
+      size: true
+    }).exec( /*#__PURE__*/function () {
+      var _ref = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee(res) {
+        return _regenerator.default.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                that.originalWidth = res[0].width;
+                that.originalHeight = res[0].height;
+              case 2:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }));
+      return function (_x) {
+        return _ref.apply(this, arguments);
+      };
+    }());
   },
   methods: {
     // 上传图片
@@ -189,13 +242,36 @@ var _default = {
           that.originalImage = res.tempFilePaths[0];
           that.generatedImage = null;
           that.qrcode = null;
-          // uni.getFileSystemManager().readFile({
-          // 	filePath: that.originalImage,
-          // 	encoding: 'base64',
-          // 	success: r => {
-          // 		that.originalImage = 'data:image/jpeg;base64,' + r.data;
-          // 	}
-          // })
+          setTimeout(function () {
+            // 获取图片宽高
+            uni.getImageInfo({
+              src: res.tempFilePaths[0],
+              success: function success(info) {
+                // 原始图片的真实宽高
+                that.imgWidth = info.width;
+                that.imgheight = info.height;
+                var ratio_w = that.originalWidth / info.width;
+                var ratio_h = that.originalHeight / info.height;
+                if (ratio_w > ratio_h) {
+                  var distance = (that.originalWidth - that.originalHeight * that.imgWidth / info.height) / 2;
+                  that.canvasTop = 0;
+                  that.canvasBottom = 0;
+                  that.canvasLeft = distance;
+                  that.canvasRight = distance;
+                } else {
+                  var _distance = (that.originalHeight - that.originalWidth / info.width * info.height) / 2;
+                  that.canvasLeft = 0;
+                  that.canvasRight = 0;
+                  that.canvasTop = _distance;
+                  that.canvasBottom = _distance;
+                }
+              },
+              fail: function fail(e) {
+                console.log(e);
+                debugger;
+              }
+            });
+          }, 100);
         }
       });
     },

@@ -18,7 +18,7 @@
     }
   },
   "compileType": "miniprogram",
-  "libVersion": "2.31.0",
+  "libVersion": "",
   "appid": "wx175148b97bd83190",
   "projectname": "jianchen-watemark-applet",
   "condition": {},

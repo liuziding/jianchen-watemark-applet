@@ -21,6 +21,45 @@
   width: 100%;
   height: 100%;
 }
+.ancientry .ancientry_original.data-v-45a81986 {
+  position: relative;
+  border: 1px solid green;
+}
+.ancientry .ancientry_original .canvas_main.data-v-45a81986 {
+  border: 1px solid red;
+}
+.ancientry .ancientry_original .angle.data-v-45a81986 {
+  border-right: 8rpx solid #999;
+  border-top: 8rpx solid #999;
+  width: 60rpx;
+  height: 60rpx;
+}
+.ancientry .ancientry_original .left-top-angle.data-v-45a81986 {
+  position: absolute;
+  left: 20rpx;
+  top: 20rpx;
+  -webkit-transform: rotate(270deg);
+          transform: rotate(270deg);
+}
+.ancientry .ancientry_original .left-bottom-angle.data-v-45a81986 {
+  position: absolute;
+  left: 20rpx;
+  bottom: 20rpx;
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+.ancientry .ancientry_original .right-top-angle.data-v-45a81986 {
+  position: absolute;
+  right: 20rpx;
+  top: 20rpx;
+}
+.ancientry .ancientry_original .right-bottom-angle.data-v-45a81986 {
+  position: absolute;
+  right: 20rpx;
+  bottom: 20rpx;
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+}
 .ancientry .ancientry_original_operation.data-v-45a81986 {
   height: 100rpx;
   width: 100%;
