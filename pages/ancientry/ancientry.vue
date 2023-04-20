@@ -1,14 +1,19 @@
 <template>
 	<view class="ancientry">
-		1234
-		<!-- <view class="ancientry_original">
-			<template v-if="originalImage">
-				<image :src="originalImage" mode="aspectFit" />
-				<view class="canvas_main" :style="{position: 'absolute', left:canvasLeft+'px', top:canvasTop+'px', right:canvasRight+'px', bottom:canvasBottom+'px'}">
+		<!-- <view class="ancientry_original"> -->
+			<!-- <template v-if="originalImage"> -->
+				<!-- <image :src="originalImage" mode="aspectFit" /> -->
+				<!-- <view class="canvas_main" :style="{position: 'absolute', left:canvasLeft+'px', top:canvasTop+'px', right:canvasRight+'px', bottom:canvasBottom+'px'}">
 					1341234213
-				</view>
-			</template>
-			<template v-else>
+				</view> -->
+				<!-- <view
+					class="canvas_main"
+					:style="{position: 'absolute', left:canvasLeft+'px', top:canvasTop+'px', right:canvasRight+'px', bottom:canvasBottom+'px'}"
+				>
+					2345352345234523
+				</view> -->
+			<!-- </template> -->
+			<!-- <template v-else>
 				<view class="angle left-top-angle"></view>
 				<view class="angle left-bottom-angle"></view>
 				<view class="angle right-top-angle"></view>
@@ -18,8 +23,8 @@
 		<view class="ancientry_original_operation">
 			<view class="ancientry_original_button" @click="uploadImage">上传图片</view>
 			<view class="ancientry_original_button" @click="removeWaterMark">生成古风</view>
-		</view>
-		<view class="ancientry_generated">
+		</view> -->
+		<!-- <view class="ancientry_generated">
 			<image :src="generatedImage" mode="aspectFit" />
 		</view>
 		<view class="ancientry_generated_operation">
@@ -29,7 +34,7 @@
 </template>
 
 <script>
-	import base64src from '@/utils/base64.js';
+	// import base64src from '@/utils/base64.js';
 	export default {
 		data() {
 			return {
@@ -39,6 +44,8 @@
 				canvasTop: 0, 							// 画布距离顶部大小
 				canvasRight: 0, 						// 画布距离右边大小
 				canvasBottom: 0, 					// 画布距离底部大小
+				canvasWidth: 0, // 画布宽度
+				canvasHeight: 0, // 画布高度
 				originalWidth: 0, 					// 原始盒子宽度
 				originalHeight: 0,					// 原始盒子高度
 				originalImage: null,
@@ -54,15 +61,21 @@
 		onReady() {
 			// 获取上方边框的宽高
 			let that = this;
-			uni.createSelectorQuery()
-					.select(".ancientry_original")
-					.fields({ node: true, size: true })
-					.exec(async (res) => {
-						that.originalWidth = res[0].width;
-						that.originalHeight = res[0].height;
-					});
+			// uni.createSelectorQuery()
+			// 		.select(".ancientry_original")
+			// 		.fields({ node: true, size: true })
+			// 		.exec(async (res) => {
+			// 			that.originalWidth = res[0].width;
+			// 			that.originalHeight = res[0].height;
+			// 		});
 		},
 		methods: {
+			
+			// onImageLoad(event) {
+			// 	debugger;
+			// 	this.canvasWidth = event.detail.width; // 画布宽度
+			// 	this.canvasHeight = event.detail.height; // 画布高度
+			// },
 			
 			// 上传图片
 			uploadImage() {
@@ -307,8 +320,8 @@
 			border: 1px solid green;
 			.canvas_main {
 				// position: absolute;
-				// left: 40px;
-				// top: 20px;
+				// left: 0;
+				// top: 0;
 				// bottom: 20px;
 				// right: 20px;
 				border: 1px solid red;
