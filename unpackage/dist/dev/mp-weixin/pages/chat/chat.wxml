@@ -1,1 +1,1 @@
-<view class="data-v-bf16e7f4">对话</view>
+<view class="data-v-bf16e7f4"><movable-area class="data-v-bf16e7f4"><movable-view x="{{x}}" y="{{y}}" scale="true" damping="900" friction="100" bindscale="myscaleevent" bindchange="mychangeevent" direction="all" class="data-v-bf16e7f4">text</movable-view></movable-area></view>

@@ -1,6 +1,7 @@
 <template>
 	<view class="ancientry">
-		<view class="ancientry_original">
+		1234
+		<!-- <view class="ancientry_original">
 			<template v-if="originalImage">
 				<image :src="originalImage" mode="aspectFit" />
 				<view class="canvas_main" :style="{position: 'absolute', left:canvasLeft+'px', top:canvasTop+'px', right:canvasRight+'px', bottom:canvasBottom+'px'}">
@@ -23,7 +24,7 @@
 		</view>
 		<view class="ancientry_generated_operation">
 			<view class="ancientry_generated_button" @click="getSaveImg">保存图片</view>
-		</view>
+		</view> -->
 	</view>
 </template>
 
