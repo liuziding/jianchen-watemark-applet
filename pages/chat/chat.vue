@@ -11,8 +11,8 @@
 						damping="900"
 						friction="100"
 						direction="all"
-						bindscale="myscaleevent"
-						bindchange="mychangeevent"
+						@scale="movableScale"
+						@change="movableChange"
 					></movable-view>
 				</movable-area>
 			</template>
@@ -49,15 +49,15 @@
 			flex: 1;
 			width: 100%;
 			margin: 0 auto;
-			border-bottom: 1px solid #ddd;
-			border-top: 1px solid #DDD;
+			// border-bottom: 1px solid #ddd;
+			// border-top: 1px solid #DDD;
 			image {
 				width: 100%;
 				height: 100%;
 			}
 		}
 		.ancientry_original {
-			border: 1px solid green;
+			// border: 1px solid green;
 			position: relative;
 			.angle {
 				border-right: 8rpx solid #999;
@@ -92,7 +92,7 @@
 				height: 200px;
 				width: 200px;
 				overflow: hidden;
-				border: 1px solid goldenrod;
+				// border: 1px solid goldenrod;
 				movable-view {
 					  display: flex;
 					  align-items: center;
@@ -151,6 +151,8 @@
 	export default {
 		data() {
 			return {
+				x: 10, // 矩形框x坐标
+				y: 10, // 矩形框y坐标
 				imgWidth: 0, 								// 原始图片宽度
 				imgHeight: 0, 							// 原始图片高度
 				canvasLeft: 0, 						// 画布距离左边大小
@@ -316,6 +318,22 @@
 				});
 			},
 			
+			// 移动矩形框触发的方法
+			movableChange(e) {
+				console.log('4444444')
+				console.log(e)
+				// this.x = e.detail.x; // 矩形框x坐标
+				// this.y = e.detail.y; // 矩形框y坐标
+			},
+			
+			// 矩形框缩放触发的方法
+			movableScale(e) {
+				console.log('55555555')
+				console.log(e)
+				// this.x = e.detail.x;
+				// this.y = e.detail.y;
+			},
+			
 			// 去水印
 			removeWaterMark() {
 				let that = this;
@@ -360,28 +378,3 @@
 		}
 	}
 </script>
-
-<!-- // export default {
-//   mounted() {
-//     this.setPosition();
-//   },
-//   methods: {
-//     setPosition() {
-//       const image = uni.createSelectorQuery().select('.image');
-//       const view = uni.createSelectorQuery().select('.view-element');
-//       image.boundingClientRect(data1 => {
-//         view.boundingClientRect(data2 => {
-//           const top = data2.top - data1.top;
-//           const left = data2.left - data1.left;
-// 					console.log('top==', top);
-// 					console.log('left==', left)
-//           view.css({
-//             top: top + 'px',
-//             left: left + 'px'
-//           });
-//         }).exec();
-//       }).exec();
-//     }
-//   }
-// }
-// </script> -->

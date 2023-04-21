@@ -296,6 +296,10 @@ var _base = _interopRequireDefault(__webpack_require__(/*! @/utils/base64.js */ 
 var _default = {
   data: function data() {
     return {
+      x: 10,
+      // 矩形框x坐标
+      y: 10,
+      // 矩形框y坐标
       imgWidth: 0,
       // 原始图片宽度
       imgHeight: 0,
@@ -496,6 +500,20 @@ var _default = {
       (0, _base.default)(shareQrImg, function (resCurrent) {
         that.generatedImage = resCurrent;
       });
+    },
+    // 移动矩形框触发的方法
+    movableChange: function movableChange(e) {
+      console.log('4444444');
+      console.log(e);
+      // this.x = e.detail.x; // 矩形框x坐标
+      // this.y = e.detail.y; // 矩形框y坐标
+    },
+    // 矩形框缩放触发的方法
+    movableScale: function movableScale(e) {
+      console.log('55555555');
+      console.log(e);
+      // this.x = e.detail.x;
+      // this.y = e.detail.y;
     },
     // 去水印
     removeWaterMark: function removeWaterMark() {

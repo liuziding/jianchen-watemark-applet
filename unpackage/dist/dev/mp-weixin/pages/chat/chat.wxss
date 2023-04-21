@@ -14,15 +14,12 @@
   flex: 1;
   width: 100%;
   margin: 0 auto;
-  border-bottom: 1px solid #ddd;
-  border-top: 1px solid #DDD;
 }
 .ancientry .ancientry_original image.data-v-bf16e7f4, .ancientry .ancientry_generated image.data-v-bf16e7f4 {
   width: 100%;
   height: 100%;
 }
 .ancientry .ancientry_original.data-v-bf16e7f4 {
-  border: 1px solid green;
   position: relative;
 }
 .ancientry .ancientry_original .angle.data-v-bf16e7f4 {
@@ -61,7 +58,6 @@
   height: 200px;
   width: 200px;
   overflow: hidden;
-  border: 1px solid goldenrod;
 }
 .ancientry .ancientry_original movable-area movable-view.data-v-bf16e7f4 {
   display: flex;
